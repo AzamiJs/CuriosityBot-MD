@@ -1,0 +1,275 @@
+{
+"index": {
+"welcome": {
+"text1": "🍟 Saludos",
+"text2": "Te damos la bienvenida al grupo"
+},
+
+"bye": {
+"text1": "Ha abandonado el grupo"
+},
+
+"actions": {
+"text1": "Ha sido ascendido al rol de *administrador* en este grupo.",
+"text2": "Ha sido removido de su rol de *administrador* en este grupo."
+}
+},
+
+"setup": {
+"text1": "✅ Operación realizada con éxito",
+"text2": "Esta función está reservada exclusivamente para los administradores del grupo.",
+"text3": "Para ejecutar esta función, el bot debe contar con privilegios de administrador.",
+"text4": "Esta función está restringida al desarrollador del bot.",
+"text5": "Esta función solo puede ser utilizada dentro de chats grupales.",
+"text6": "Esta función solo está disponible para chats individuales.",
+"text7": "Esta función está designada únicamente para el uso del número de bot.",
+"text8": "Se ha producido un error inesperado.",
+"text9": "Tu solicitud está siendo procesada, por favor espera un momento.",
+"text10": "Esta función está disponible únicamente para usuarios con membresía premium."
+},
+
+"config": {
+"anti_link": {
+"text1": "🚩 *Alerta de enlace*\n\nEste es el enlace del grupo.",
+"text2": "🚩 *Alerta de enlace*\n\nEres administrador, puedes proceder como desees.",
+"text3": "🚩 *Alerta de enlace*\n\nEres el propietario, no puedo tomar acciones contra ti.",
+"text4": "🚩 *Alerta de enlace*",
+"text5": "Por favor, abstente de enviar enlaces de otros grupos",
+"text6": "🚩 *Alerta de enlace*\n\nEl bot no tiene privilegios de administrador, no puede eliminar enlaces"
+},
+
+"anti_fake": {
+"text1": "🚩 *Número sospechoso detectado, serás eliminado/a*\n\nNos vemos pronto"
+}
+},
+
+"ai": {
+"gemini": {
+"text1": "🍟 *Por favor, ingresa tu solicitud*",
+"text2": "¿Estás familiarizado con CuriosityBot-MD?",
+"text3": "🚩 *Se ha producido un error*"
+},
+
+"ia": {
+"text1": "🍟 *Por favor, ingresa tu solicitud*",
+"text2": "Las 10 películas más destacadas",
+"text3": "🚩 *Se ha producido un error*"
+}
+},
+
+"info": {
+"menu": {
+"text1": "*Prefijo:*",
+"text2": "*Usuarios:*",
+"text3": "*Idioma:*",
+"text4": "🍟 Información",
+"text5": "*Creador:*",
+"text6": "*Versión:* ",
+"text7": "🚩 *Nota*\n_Bot en desarrollo_",
+"text8": "🚩 *Se ha producido un error*"
+},
+
+"allmenu": {
+"text1": "🍟 *Menu Completo*",
+"text2": "_Éste es un bot en desarrollo, no cuenta con la mayoría de sus comandos._"
+},
+
+"ping": {
+"text1": "📉 Velocidad de respuesta:",
+"text2": "- Nivel de actividad:"
+},
+
+"status": {
+"text1": "Estado no detectado",
+"text2": "🚩 *Estado actual*",
+"text3": "En proceso de verificación"
+},
+
+"report": {
+"text1": "🍟 *Por favor, redacta tu informe*",
+"text2": "El comando !infobot no está funcionando",
+"text3": "🚩 *Se requieren al menos 10 caracteres para realizar el informe*",
+"text4": "🚩 *El informe puede contener un máximo de 1000 caracteres*",
+"text5": "🚩 *Informe enviado*",
+"text6": "📱 Número de contacto",
+"text7": "🍟 Mensaje del informe"
+},
+
+"script": {
+"text1": "◦ *Nombre del script* :",
+"text2": "◦ *Cantidad de visitantes* :",
+"text3": "◦ *Tamaño del archivo* :",
+"text4": "◦ *Última actualización* :",
+"text5": "◦ *Enlace de descarga* :"
+},
+
+"curiosity": {
+"text1": "🍿 Hola, soy CuriosityBot. Echa un vistazo a esta lista de comandos"
+}
+},
+
+"on_off": {
+"antilink": {
+"text1": "🍟 Presione *Activar* o *Desactivar*\n\n`Puede usar`\n.antilink on\n.antilink off",
+"text2": "🚩 *La función antilink ya está activada.*",
+"text3": "✅ *Función antilink activada con éxito.*",
+"text4": "🚩 *La función antilink ya está desactivada.*",
+"text5": "❌ *Función antilink desactivada con éxito.*"
+},
+
+"antifake": {
+"text1": "🍟 Presione *Activar* o *Desactivar*\n\n`Puede usar`\n.antifake on\n.antifake off",
+"text2": "🚩 *La función antifake ya está activada.*",
+"text3": "✅ *Función antifake activada con éxito.*",
+"text4": "🚩 *La función antifake ya está desactivada.*",
+"text5": "❌ *Función antifake desactivada con éxito.*"
+}
+},
+
+"dl": {
+"play": {
+"text1": "🍟 *Por favor, introduce el título de un video*\n_.play photograph_",
+"text2": "YouTube - Curiosity",
+"text3": "*Título del video:*",
+"text4": "*Cantidad de visualizaciones:*",
+"text5": "*Enlace del video:*",
+"text6": "🍟 Selecciona tu preferencia",
+"text7": "Ver más resultados 📋",
+"text8": "🚩 *Se ha producido un error*"
+},
+
+"play2": {
+"text1": "🍟 *Por favor, introduce el título de un video*\n_.play2 photograph_",
+"text2": "🚩 *Se ha producido un error*"
+},
+
+"play3": {
+"text1": "🍟 *Por favor, introduce el título de un video*\n_.play3 photograph_",
+"text2": "🚩 *Se ha producido un error*"
+},
+
+"gitclone": {
+"text1": "🍟 *Por favor, introduce el enlace de un repositorio de Github*\n_.gitclone https://github.com/AzamiJs/CuriosityBot_",
+"text2": "🚩 *Enlace incorrecto*",
+"text3": "🚩 *Se ha producido un error*"
+},
+
+"tiktok": {
+"text1": "🍟 *Por favor, introduce el enlace de un video de TikTok*\n_.tiktok https://vm.tiktok.com/ZMMvybdev/_",
+"text2": "🚩 *Enlace incorrecto*",
+"text3": "🚩 *Se ha producido un error*"
+},
+
+"facebook": {
+"text1": "🍟 *Por favor, introduce el enlace de un video de Facebook*\n_.fb https://www.facebook.com/watch?v=636541475139_",
+"text2": "🚩 *Enlace incorrecto*",
+"text3": "🚩 *Se ha producido un error*"
+}
+},
+ 
+"group": {
+"admins": {
+"text1": "🍟 *Por favor, indique su motivo para contactar a los administradores.*",
+"text2": "🚩 *El motivo proporcionado es demasiado breve, se requieren al menos 10 caracteres.*",
+"text3": "Mensaje",
+"text4": "🚩 *Staff del Grupo*"
+},
+
+"settings": {
+"text1": "🍟 *Seleccione una opción para configurar el grupo.*\n\nEjemplo:\n○ !grupo abrir\n○ !grupo cerrar\n○ !grupo bloquear\n○ !grupo desbloquear",
+"text2": "✅ *Configuración aplicada correctamente.*"
+},
+
+"demote": {
+"text1": "🍟 *Etiquete al administrador que desea degradar.*\n\nEjemplo: !demote @usuario\n!demote *responder a un mensaje*",
+"text2": "🚩 *Número proporcionado incorrecto.*",
+"text3": "✅ *El administrador ha sido degradado exitosamente.*"
+},
+
+"fantasmas": {
+"text1": "🍟 *Este grupo es activo y no contiene miembros inactivos.*",
+"text2": "🚩 *Revisión de miembros inactivos en curso.*\n\nLista de miembros inactivos:"
+},
+
+"hidetag": {
+"text1": "🍟 *Ingrese o responda a un texto para continuar.*"
+},
+
+"infogroup": {
+"text1": "🚩 *Información del Grupo*",
+"text2": "Id:",
+"text3": "Nombre del grupo:",
+"text4": "Total de participantes:",
+"text5": "Participantes",
+"text6": "Creador(a) del grupo:",
+"text7": "Administradores del grupo:",
+"text8": "Descripción:",
+"text9": "No hay descripción disponible."
+},
+
+"kick": {
+"text1": "🍟 *Etiquete o responda al mensaje de la persona que desea eliminar del grupo.*"
+},
+
+"promote": {
+"text1": "🍟 *Etiquete al usuario que desea promover.*\n\nEjemplo: !promote @usuario\n!promote *responder a un mensaje*",
+"text2": "🚩 *Número proporcionado incorrecto.*",
+"text3": "✅ *El usuario ha sido promovido exitosamente.*"
+},
+
+"tagall": {
+"text1": "Mensaje",
+"text2": "No se ha proporcionado un mensaje."
+}
+},
+
+"tools": {
+"traducir": {
+"text1": "🍟 *Ejemplo:*\n.translate es hello",
+"text2": "🚩 *Se ha producido un error*"
+}
+},
+
+"owner": {
+"update": {
+"text1": "✅ *No hay actualizaciones pendientes.*",
+"text2": "✅ *Actualización finalizada exitosamente.*\n\n",
+"text3": "🚩 *Se han detectado cambios locales en archivos del bot que entran en conflicto con las actualizaciones del repositorio. Para actualizar, reinstala el bot o realiza las actualizaciones manualmente*\n\nArchivos en conflicto: ",
+"text4": "🚩 *Se ha producido un error. Por favor, inténtalo de nuevo más tarde*"
+},
+
+"restart": {
+"text1": "🚩 *Reiniciando*"
+},
+
+"join": {
+"text1": "🍟 *Ingrese el enlace de un grupo*",
+"text2": "✅ *Me he unido al grupo*`"
+}
+},
+
+"rpg": {
+"reg": {
+"text1": "🚩 *Ya estás registrado*",
+"text2": "🍟 *Instrucciones de uso*\n> .reg nombre.edad\n\n`Ejemplo:`\n.reg Zam.20",
+"text3": "🚩 *El nombre no puede estar vacío*",
+"text4": "🚩 *La edad no puede estar vacía*",
+"text5": "🚩 *La edad máxima permitida es 80 años*",
+"text6": "🚩 *La edad mínima permitida es 10 años*",
+"text7": "🚩 *El nombre es demasiado largo*",
+"text8": "✅ *Registro exitoso*",
+"text9": "Nombre:",
+"text10": "Edad:",
+"text11": "Idioma:",
+"text12": "🍟 `Información adicional`",
+"text13": "> Selecciona tu idioma con el comando .idioma"
+}
+},
+
+"stickers": {
+"sticker": {
+"text1": "🍟 *Responda a una imagen o un vídeo usando el comando*",
+"text2": "🚩 *El video puede durar como maximo 15 segundos*"
+}
+}
+}
