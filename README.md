@@ -4,7 +4,7 @@
 </p>
 
 ## `Grupo de WhatsApp`
-<a href="https://chat.whatsapp.com/CG2ITch3hUc2zZst1wmJoK"><img title="Grupo" src="https://img.shields.io/badge/Whatsapp Group-green?colorA=%23ff0000&colorB=%23017e40&style=for-the-badge"></a>
+<a href="https://chat.whatsapp.com/JAdp1tAPOCEJZWUeEVrnc7"><img title="Grupo" src="https://img.shields.io/badge/Whatsapp Group-green?colorA=%23ff0000&colorB=%23017e40&style=for-the-badge"></a>
 
 ### `Deply HerokuApp`
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/AzamiJs/CuriosityBot-MD/)
