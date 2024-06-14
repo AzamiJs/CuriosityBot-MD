@@ -86,5 +86,5 @@ node .
 
 ### `Agradecimiento ⭐`
 * [`@Zam`](https://github.com/AzamiJs)
-* [`@Mario`](https://github.com/elrebelde21)
+* [@elrebelde21`](https://github.com/elrebelde21)
 * [`@GataDios`](https://github.com/GataNina-Li)
