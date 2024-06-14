@@ -6,6 +6,9 @@
 ## `Grupo de WhatsApp`
 <a href="https://chat.whatsapp.com/JAdp1tAPOCEJZWUeEVrnc7"><img title="Grupo" src="https://img.shields.io/badge/Whatsapp Group-green?colorA=%23ff0000&colorB=%23017e40&style=for-the-badge"></a>
 
+### `🍨 ACTIVAR 24/7 EN INFINITY HOST`
+<a href="https://dashboard.infinitywa.xyz"><img src="https://qu.ax/TPhh.jpg" height="125px"></a>
+
 ### `Deply HerokuApp`
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/AzamiJs/CuriosityBot-MD/)
 
