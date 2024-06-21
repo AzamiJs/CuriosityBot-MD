@@ -18,9 +18,9 @@ const PhoneNumber = require('awesome-phonenumber')
 const yts = require('yt-search')
 const ytdl = require('ytdl-core')
 const FormData = require('form-data') 
-const { youtubedl, youtubedlv2 } = require('@bochilteam/scraper');
+const { youtubedl, youtubedlv2 } = require('@bochilteam/scraper')
 const { WA_DEFAULT_EPHEMERAL, getAggregateVotesInPollMessage, generateWAMessageFromContent,  proto,  generateWAMessageContent, generateWAMessage,  prepareWAMessageMedia,  downloadContentFromMessage,  areJidsSameUser,  getContentType } = require('@whiskeysockets/baileys')
-const {  smsg,  getGroupAdmins,  clockString,  sleep,  getBuffer,  fetchJson, isUrl } = require('./docs/func')
+const {  smsg,  getGroupAdmins,  clockString,  sleep,  getBuffer,  fetchJson, isUrl } = require('./lib/simple')
 require('./store.js')
 
 const msgs = (message) => {
@@ -92,8 +92,8 @@ mute: false
   
 //Lenguaje
 let lang = global.db.data.users[m.sender]?.lenguaje || 'es'
-const L = JSON.parse(fs.readFileSync(`./docs/idiomas/${lang}.json`))
-const { 
+const L = JSON.parse(fs.readFileSync(`./lib/idiomas/${lang}.json`))
+const {
 config: { anti_link: nLnk, anti_fake: aFk }, 
 ai: { gemini, ia }, 
 info: { menu, allmenu, ping, status, report, script }, 
@@ -709,7 +709,7 @@ return m.reply(tiktok.text2)
 }
 m.react('🕕') 
 try {
-const { Tiktok } = require('./docs/tiktok')
+const { Tiktok } = require('./lib/tiktok')
 Tiktok(q).then(data => {
 client.sendMessage(m.chat, { caption: `By: *${data.author}*`, video: { url: data.nowm } }, { quoted: m })
 })
@@ -1251,7 +1251,7 @@ console.log(e)}}}
 break
 
 case 'curiosity': case 'bot':
-const _curio = JSON.parse(fs.readFileSync(`./docs/idiomas/${lang}.json`))
+const _curio = JSON.parse(fs.readFileSync(`./lib/idiomas/${lang}.json`))
 const cTxt = _curio.info.curiosity
 const testt = generateWAMessageFromContent(from, { viewOnceMessage: { message: { "messageContextInfo": { "deviceListMetadata": {}, "deviceListMetadataVersion": 2 }, interactiveMessage: proto.Message.InteractiveMessage.create({ body: proto.Message.InteractiveMessage.Body.create({ text: '' }), footer: proto.Message.InteractiveMessage.Footer.create({ text: 'By CuriosityBot' }), header: proto.Message.InteractiveMessage.Header.create({ title: cTxt.text1, subtitle: 'Ax es Uke de Zam', hasMediaAttachment: false }), nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({ buttons: [ { "name": "cta_url", "buttonParamsJson": "{\"display_text\":\"Git\",\"url\":\"https://github.com/AzamiJs\",\"merchant_url\":\"https://www.google.com\"}" }, { "name": "cta_url", "buttonParamsJson": "{\"display_text\":\"Channel/Canal\",\"url\":\"https://whatsapp.com/channel/0029VaB4w2ZFHWpwgyEe3w2k\",\"merchant_url\":\"https://www.google.com\"}" }, { "name": "quick_reply", "buttonParamsJson": `{"display_text":"Actualizar 🍿","id":".update"}` }, { "name": "quick_reply", "buttonParamsJson": `{"display_text":"Unreg","id":".unreg"}` }, { "name": "quick_reply", "buttonParamsJson": `{"display_text":"Gemini","id":".gemini"}` }, { "name": "quick_reply", "buttonParamsJson": `{"display_text":"Registrarse","id":".Reg Curiosity.23"}` }, {"name": "quick_reply", "buttonParamsJson": `{"display_text":"Ping ","id":".ping"}` }, {"name": "quick_reply", "buttonParamsJson": `{"display_text":"Estado","id":".status"}` } ], })})}}}, {})
 client.relayMessage(testt.key.remoteJid, testt.message, { messageId: testt.key.id }, {quoted: m})

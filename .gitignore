@@ -3,4 +3,5 @@ tmp/*
 node_modules/
 session/
 database.json
-package-lock.json 
+package-lock.json
+.git/

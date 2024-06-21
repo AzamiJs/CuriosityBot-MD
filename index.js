@@ -17,7 +17,7 @@ const readline = require('readline')
 const { tmpdir } = require('os')
 const { join } = require('path')
 const PhoneNumber = require('awesome-phonenumber')
-const { smsg, sleep } = require('./docs/func')
+const { smsg, sleep } = require('./lib/simple')
 const { readdirSync, statSync, unlinkSync } = require('fs')
 const { say } = cfonts
 const color = (text, color) => {
@@ -47,8 +47,16 @@ const marco = chalk.yellow
 const nameb = chalk.blue.bgBlue.bold.cyan
 const methodCodeQR = process.argv.includes('qr')
 const MethodMobile = process.argv.includes('mobile')
+const ini = chalk.green
 
 let opcion
+const options = {
+font: 'simple3d', // Cambia a la fuente deseada (por ejemplo: console, block, simpleBlock, simple, 3d, simple3d, chrome, huge, shade, slick, grid, pallet, tiny)
+align: 'center',
+colors: ['magenta', 'yellow'],
+}
+const custom = cfonts.render('Curiosity Bot MD', options)
+console.log(custom.string)
 if (!fs.existsSync(`./${session}/creds.json`) && !methodCodeQR) {
 while (true) {
 opcion = await question(marco('*************************\n') + nameb('CuriosityBot-MD\n') + marco('*************************\n') + colores('Seleccione una opción:\n') + opcionQR('1. Con código QR\n') + opcionTexto('2. Con código de emparejamiento\n'))
@@ -108,9 +116,9 @@ var low
 try {
 low = require('lowdb')
 } catch (e) {
-low = require('./docs/lowdb')}
+low = require('./lib/lowdb')}
 const { Low, JSONFile } = low
-const mongoDB = require('./docs/mongoDB')
+const mongoDB = require('./lib/mongoDB')
 global.opts = new Object(yargs(process.argv.slice(2)).exitProcess(false).parse())
 global.db = new Low(
 /https?:\/\//.test(opts['db'] || '') ?
@@ -158,15 +166,13 @@ setInterval(async () => {
 await clearTmp()
 console.log(`\nBasura eliminada\n`)}, 180000)
 
-const fkontak = { "key": { "participants":"0@s.whatsapp.net", "remoteJid": "status@broadcast", "fromMe": false, "id": "Halo" }, "message": { "contactMessage": { "vcard": `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:y\nitem1.TEL;waid=:\nitem1.X-ABLabel:Ponsel\nEND:VCARD` }}, "participant": "0@s.whatsapp.net" }
-  
 if (global.db && global.db.data && global.db.data.users && global.db.data.users[anu.participants]) {
 var idioma = global.db.data.users[anu.participants]?.lenguaje || 'es'
 } else {
 var idioma = 'es'
 }
 try {
-var _welcome = JSON.parse(fs.readFileSync(`./docs/idiomas/${idioma}.json`))
+var _welcome = JSON.parse(fs.readFileSync(`./lib/idiomas/${idioma}.json`))
 } catch (error) {
 console.error('Error:', error)
 }
@@ -275,16 +281,6 @@ console.log(receivedPendingNotifications)
 
 if (connection == 'connecting') {
 console.log('🚀 Iniciando...')
-
-say('Curiosity\nBot\nMD', {
-font: 'block',
-align: 'center',
-colors: ['magenta', 'cyan']
-})
-say(`Bot: ${wm}\nVersion: 1.0.0 (beta)\nCreador: Azami ~ Zam\nEmail: thecuriositybot@gmail.com`, {
-font: 'console',
-gradient: ['blue', 'magenta']
-})
 }
 
 if (lastDisconnect === undefined) {
@@ -297,7 +293,7 @@ connectToWhatsApp()
 }
 
 if (update.isNewLogin) {
-console.log(`Conexion exitosa`)
+console.log(ini(`Conexion exitosa`))
 }
 
 if (connection == 'open') {
