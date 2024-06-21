@@ -1,0 +1,6 @@
+tmp/*
+!tmp/.file
+node_modules/
+session/
+database.json
+package-lock.json 
