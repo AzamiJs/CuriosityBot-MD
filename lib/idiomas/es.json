@@ -10,8 +10,14 @@
 },
 
 "actions": {
-"text1": "Ha sido ascendido al rol de *administrador* en este grupo.",
-"text2": "Ha sido removido de su rol de *administrador* en este grupo."
+"text1": "🍟 *¡Ahora solo los administradores pueden enviar mensajes!*",
+"text2": "🍟 *Ahora todos los participantes pueden mandar mensajes*",
+"text3": "🍟 *Ahora solo los administradores pueden editar la información del grupo*",
+"text4": "🍟 *Ahora todos los usuarios pueden editar la información del grupo*",
+"text5": "🍟 ¡Se ha modificado la descripción!*\n\nNueva descripción:",
+"text6": "🍟 *¡Se ha modificado el título del grupo!*\nNuevo nombre:",
+"text7": "Ha sido ascendido al rol de *administrador* en este grupo.",
+"text8": "Ha sido removido de su rol de *administrador* en este grupo."
 }
 },
 
@@ -227,6 +233,13 @@
 "traducir": {
 "text1": "🍟 *Ejemplo:*\n.translate es hello",
 "text2": "🚩 *Se ha producido un error*"
+},
+
+"google": {
+"text1": "🍟 *Ejemplo*",
+"text2": "*⸰ Titulo:*",
+"text3": "*⸰ Descripción:*",
+"text4": "*⸰ Enlace:*"
 }
 },
 

@@ -132,7 +132,7 @@ if (global.db.READ) return new Promise((resolve) => setInterval(function () { (!
 if (global.db.data !== null) return
 global.db.READ = true
 await global.db.read()
-global.db.READ = false
+global.db.READ = false 
 global.db.data = {
 users: {},
 chats: {},
@@ -185,55 +185,55 @@ await sleep(2000)
 try {
 ppgroup = await client.profilePictureUrl(anu.id, 'image')
 } catch (err) {
-ppgroup = 'https://i.ibb.co/RBx5SQC/avatar-group-large-v2.png?q=60'
+ppgroup = 'https://qu.ax/OEgX.jpg'
 }
-
-let text = `🍟 *¡Ahora solo los administradores pueden enviar mensajes!*`
+const ac = _welcome.index.actions
+let text = ac.text1
 client.sendContextInfoIndex(res.id, text, fkontak)
 } else if (res.announce == false) {
 await sleep(2000)
 try {
 ppgroup = await client.profilePictureUrl(anu.id, 'image')
 } catch (err) {
-ppgroup = 'https://i.ibb.co/RBx5SQC/avatar-group-large-v2.png?q=60'
+ppgroup = 'https://qu.ax/OEgX.jpg'
 }
-let text = `🍟 *Ahora todos los participantes pueden mandar mensajes*`
+let text = ac.text2
 client.sendContextInfoIndex(res.id, text, fkontak)
 } else if (res.restrict == true) {
 await sleep(2000)
 try {
 ppgroup = await client.profilePictureUrl(anu.id, 'image')
 } catch (err) {
-ppgroup = 'https://i.ibb.co/RBx5SQC/avatar-group-large-v2.png?q=60'
+ppgroup = 'https://qu.ax/OEgX.jpg'
 }
-let text = `🍟 *Ahora solo los administradores pueden editar la información del grupo*`
+let text = ac.text3
 client.sendContextInfoIndex(res.id, text, fkontak)
 } else if (res.restrict == false) {
 await sleep(2000)
 try {
 ppgroup = await client.profilePictureUrl(anu.id, 'image')
 } catch (err) {
-ppgroup = 'https://i.ibb.co/RBx5SQC/avatar-group-large-v2.png?q=60'
+ppgroup = 'https://qu.ax/OEgX.jpg'
 }
-let text = `🍟 *Ahora todos los usuarios pueden editar la información del grupo*`
+let text = ac.text4
 client.sendContextInfoIndex(res.id, text, fkontak)
 } else if(!res.desc == ''){
 await sleep(2000)
 try {
 ppgroup = await client.profilePictureUrl(anu.id, 'image')
 } catch (err) {
-ppgroup = 'https://i.ibb.co/RBx5SQC/avatar-group-large-v2.png?q=60'
+ppgroup = 'https://qu.ax/OEgX.jpg'
 }
-let text = `🍟 ¡Se ha modificado la descripción!*\n\nNueva descripción: \n${res.desc}`
+let text = `${ac.text5}\n${res.desc}`
 client.sendContextInfoIndex(res.id, text, fkontak)
 } else {
 await sleep(2000)
 try {
 ppgroup = await client.profilePictureUrl(anu.id, 'image')
 } catch (err) {
-ppgroup = 'https://i.ibb.co/RBx5SQC/avatar-group-large-v2.png?q=60'
+ppgroup = 'https://qu.ax/OEgX.jpg'
 }
-let text = `🍟 *¡Se ha modificado el título del grupo!*\nNuevo nombre: ${res.subject}`
+let text = `${ac.text6}\n${res.subject}`
 client.sendContextInfoIndex(res.id, text, fkontak)
 }})
 
@@ -256,15 +256,15 @@ ppgroup = await client.profilePictureUrl(anu.id, 'image')
 ppgroup = 'https://qu.ax/OEgX.jpg'
 }
 if (anu.action == 'add') {
-client.sendMessage(anu.id, { image: { url: ppuser }, mentions: [num], caption: `${wel.text1} *@${num.split('@')[0]}* ${wel.text2} *${metadata.subject}*`})
+client.sendMessage(anu.id, { image: { url: ppuser }, mentions: [num], caption: `${wel.text1} *@${num.split('@')[0]}* ${wel.text1} *${metadata.subject}*`})
 } else if (anu.action == 'remove') {
 client.sendMessage(anu.id, { image: { url: ppuser }, mentions: [num], caption: `🍟 *@${num.split('@')[0]}* ${bye.text1}`})
 } else if (anu.action == 'promote') {
 let usuario = anu.author
-client.sendMessage(anu.id, { image: { url: ppuser }, mentions: [num, usuario], caption: `🚩 *@${num.split('@')[0]}* ${pd.text1}\n\n> Acción hecha por @${usuario.split("@")[0]}`})
+client.sendMessage(anu.id, { image: { url: ppuser }, mentions: [num, usuario], caption: `🚩 *@${num.split('@')[0]}* ${pd.text7}\n\n> Acción hecha por @${usuario.split("@")[0]}`})
 } else if (anu.action == 'demote') {
 let usuario = anu.author
-client.sendMessage(anu.id, { image: { url: ppuser }, mentions: [num, usuario], caption: `🚩 *@${num.split('@')[0]}* ${pd.text2}\n\n> Acción hecha por @${usuario.split("@")[0]}`})
+client.sendMessage(anu.id, { image: { url: ppuser }, mentions: [num, usuario], caption: `🚩 *@${num.split('@')[0]}* ${pd.text8}\n\n> Acción hecha por @${usuario.split("@")[0]}`})
 }
 }
 } catch (err) {
@@ -282,28 +282,11 @@ console.log(receivedPendingNotifications)
 if (connection == 'connecting') {
 console.log('🚀 Iniciando...')
 }
-
-if (lastDisconnect === undefined) {
-}
-
-if(connection === 'close') {
-var shouldReconnect = (lastDisconnect.error.Boom)?.output?.statusCode !== DisconnectReason.loggedOut  
-console.log(`⚠️ Conexión cerrada, reconectando...`)
-connectToWhatsApp()
-}
-
+ 
 if (update.isNewLogin) {
 console.log(ini(`Conexion exitosa`))
 }
 
-if (connection == 'open') {
-console.log(color(` `,'magenta'))
-console.log(color(JSON.stringify(client.user, null, 2), 'yellow'))
-console.log(color('[SYS]', '#009FFF'),
-color(moment().format('DD/MM/YY HH:mm:ss'), '#A1FFCE'),
-color(`\n╭───────────────────────────◉\n│\n│Conectado correctamente al WhatsApp.\n│\n╰───────────────────────────◉\n` + receivedPendingNotifications, '#38ef7d')
-)
-}
 })
 
 client.public = true

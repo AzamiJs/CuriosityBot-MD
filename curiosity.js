@@ -102,7 +102,7 @@ group: { admins, settings, demote, fantasmas, hidetag, infogroup, kick, promote,
 owner: { update: upd, join, restart }, 
 rpg: { reg }, setup,
 on_off: { antilink, antifake },
-tools: { traducir },
+tools: { traducir, google },
 stickers: { sticker }
 } = L
 
@@ -201,66 +201,8 @@ return m.reply(gemini.text3 + '\n\n> ' + error)
 }
 break
 
-case 'traducir': case 'translate': case 'tr': {
-const translate = require('@vitalets/google-translate-api') 
-if (!args || !args[0]) return m.reply(traducir.text1)
-let lang = args[0]
-let text = args.slice(1).join(' ')
-const defaultLang = 'es'
-if ((args[0] || '').length !== 2) {
-lang = defaultLang
-text = args.join(' ')
-}
-if (!text && m.quoted && m.quoted.text) text = m.quoted.text
-try {
-const result = await translate(`${text}`, {to: lang, autoCorrect: true})
-await m.reply(`${result.text}`)
-} catch {
-try {
-const lol = await fetch(`https://api.lolhuman.xyz/api/translate/auto/${lang}?apikey=${lolkeysapi}&text=${text}`)
-const loll = await lol.json()
-const result2 = loll.result.translated
-await m.reply(`${result2}`)
-} catch {
-await m.reply(traducir.text2) 
-}}}
-break  
-
-case 'google': {		
-if (!text) return m.reply(`🍟 *Ejemplo*\n${prefix + command} curiosity`)
-let google = require('google-it')
-google({'query': text}).then(res => {
-let teks = `RESULTADOS: ${text}\n\n`
-for (let g of res) {
-teks += `• Titulo : ${g.title}\n`
-teks += `• Descripción : ${g.snippet}\n`
-teks += `• Link : ${g.link}\n\n┈┈┈┈┈┈┈┈┈┈╌╌╌╌╌╌╌┈┈┈┈┈\n\n`
-} 
-m.reply(teks)})
-}
-break
-
-case 'imagen': case 'image': {
-const {googleImage} = require('@bochilteam/scraper') 
-if (!text) return m.reply(`🍟 *Ejemplo:*\n${prefix + command} Galaxia`)
-try {  
-image = await fetchJson(`https://api.akuari.my.id/search/googleimage?query=${text}`)
-n = image.result
-images = n[Math.floor(Math.random() * n.length)]
-client.sendMessage(m.chat, { image: { url: images}, caption: `${text}`}, { quoted: m, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})
-} catch {
-try {  
-const res = await googleImage(text);
-const image = res[Math.floor(Math.random() * res.length)]
-const link = image;
-client.sendMessage(m.chat, { image: { url: link}, caption: `${text}`}, { quoted: m, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})
-} catch (e) {
-console.log(e)
-}}}		
-break
-
 case 'wallpaper': {
-if (!text) return m.reply(`🍟 *Ejemplo:* ${prefix + command} anime*`) 
+if (!text) return m.reply(`${google.text1}\n${prefix + command} anime`) 
 let { wallpaper, wallpaperv2 } = require('@bochilteam/scraper')
 let _res = await (/2/.test(command) ? wallpaperv2 : wallpaper)(text) 
 let _img = _res[Math.floor(Math.random() * _res.length)]
@@ -270,16 +212,14 @@ break
 
 case 'pinterest': {
 const {pinterest} = require('@bochilteam/scraper') 
-if (!text) return m.reply(`🍟 *Ejemplo:*\n${prefix + command} Gatos`)
-m.react("🔍") 
+if (!text) return m.reply(`${google.text1}\n${prefix + command} Gatos`)
 const json = await pinterest(text)
 client.sendMessage(m.chat, { image: { url: getRandom(json) }, caption: `_${text}_`}, { quoted: m, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})
 }
 break 
 
 case 'wikipedia': case 'wiki': {
-if (!text) return m.reply(`🍟 *Ejemplo:*\n${prefix + command} quien es Colón?`)
-m.react("🔍") 
+if (!text) return m.reply(`${google.text1}\n${prefix + command} quien es Colón?`)
 try {
 const link =  await axios.get(`https://es.wikipedia.org/wiki/${text}`)
 const $ = cheerio.load(link.data)
@@ -287,7 +227,6 @@ let wik = $('#firstHeading').text().trim()
 let resulw = $('#mw-content-text > div.mw-parser-output').find('p').text().trim()
 m.reply(`RESULTADOS :\n\n${resulw}`)
 } catch (e) {
-return m.reply('🚩 *error*' + e) 
 console.log(e)}}
 break 
 
@@ -1037,7 +976,65 @@ for (let mem of participants) {
 teks += `- @${mem.id.split('@')[0]}\n`//`
 }
 client.sendMessage(m.chat, { text: teks, mentions: participants.map(a => a.id) }, { quoted: m })}
-break 
+break
+
+case 'traducir': case 'translate': case 'tr': {
+const translate = require('@vitalets/google-translate-api') 
+if (!args || !args[0]) return m.reply(traducir.text1)
+let lang = args[0]
+let text = args.slice(1).join(' ')
+const defaultLang = 'es'
+if ((args[0] || '').length !== 2) {
+lang = defaultLang
+text = args.join(' ')
+}
+if (!text && m.quoted && m.quoted.text) text = m.quoted.text
+try {
+const result = await translate(`${text}`, {to: lang, autoCorrect: true})
+await m.reply(`${result.text}`)
+} catch {
+try {
+const lol = await fetch(`https://api.lolhuman.xyz/api/translate/auto/${lang}?apikey=${lolkeysapi}&text=${text}`)
+const loll = await lol.json()
+const result2 = loll.result.translated
+await m.reply(`${result2}`)
+} catch {
+await m.reply(traducir.text2) 
+}}}
+break
+
+case 'imagen': case 'image': {
+const {googleImage} = require('@bochilteam/scraper') 
+if (!text) return m.reply(`${google.text1}\n${prefix + command} Galaxia`)
+try {  
+image = await fetch(`https://api.akuari.my.id/search/googleimage?query=${text}`)
+n = image.result
+images = n[Math.floor(Math.random() * n.length)]
+client.sendMessage(m.chat, { image: { url: images}, caption: `${text}`}, { quoted: m, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})
+} catch {
+try {  
+const res = await googleImage(text)
+const image = res[Math.floor(Math.random() * res.length)]
+const link = image
+client.sendMessage(m.chat, { image: { url: link}, caption: `${text}`}, { quoted: m, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})
+} catch (e) {
+console.log(e)
+}}}		
+break
+
+case 'google': {		
+if (!text) return m.reply(`${google.text1}\n${prefix + command} curiosity`)
+let googlee = require('google-it')
+googlee({'query': text}).then(res => {
+let teks = `\`∙ Google Search:\`\n${text}\n\n`
+for (let g of res) {
+teks += `${google.text2} ${g.title}\n`
+teks += `${google.text3} ${g.snippet}\n`
+teks += `${google.text4} ${g.link}\n\n⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼\n\n`
+}
+m.reply(teks)})
+}
+break
 		
 case 'yts': case 'ytsearch':
 if (!text) return m.reply(`Ejemplo, .yts CuriosityBot-MD`)

@@ -1,6 +1,6 @@
 {
 "name": "CuriosityBot",
-"version": "New 2024.6",
+"version": "1.0.1",
 "description": "",
 "main": "index.js",
 "type": "commonjs",
@@ -10,7 +10,7 @@
 "author": "Zam",
 "license": "ISC",
 "dependencies": {
-"@whiskeysockets/baileys": "^6.7.5",
+"@whiskeysockets/baileys": "^6.7.2",
 "@adiwajshing/keyed-db": "^0.2.4",
 "@bochilteam/scraper": "^4.2.4",
 "@ffmpeg-installer/ffmpeg": "^1.1.0",

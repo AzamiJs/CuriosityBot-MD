@@ -1,4 +1,5 @@
 const fs = require('fs')
+const gradient = require('gradient-string')
 const chalk = require('chalk')
 
 global.owner = [
@@ -10,13 +11,13 @@ global.owner = [
 global.wm = '© CuriosityBot-MD'
 global.prefa = '.'
 global.session = 'session'
-global.vs = '1.0.0'
+global.vs = '1.0.1'
 global.author = 'zam'
 
 let file = require.resolve(__filename)
 fs.watchFile(file, () => {
 fs.unwatchFile(file)
-console.log(chalk.redBright(`Actualización '${__filename}'`))
+console.log(gradient('deepskyblue', 'darkorchid')(`Archivo '${__filename}' actualizado`))
 delete require.cache[file]
 require(file)
 })
