@@ -106,7 +106,7 @@ if (m.key && m.key.remoteJid === 'status@broadcast') return
 if (!client.public && !m.key.fromMe && messages.type === 'notify') return
 if (m.key.id.startsWith('BAE5') && m.key.id.length === 16) return
 m = smsg(client, m)
-//require('./curiosity')(client, m, messages)
+require('./curiosity')(client, m, messages)
 const pluginFolder = join(__dirname, './plugins')
 const pluginFilter = filename => /\.js$/.test(filename)
 global.plugins = {}
