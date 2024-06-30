@@ -285,7 +285,7 @@ const { connection, lastDisconnect, receivedPendingNotifications, isNewLogin} = 
  */
 console.log('receivedPendingNotifications: ', receivedPendingNotifications)
 const code = lastDisconnect?.error?.output?.statusCode || lastDisconnect?.error?.output?.payload?.statusCode;
-const number = state.creds.me.jid.split('@')[0]
+const number = state?.creds?.me?.jid?.split('@')[0]
 if (connection == 'connecting') {
 console.log('🚀 Iniciando...')
 }
