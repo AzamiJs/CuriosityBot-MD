@@ -35,6 +35,11 @@ return new Promise((resolve) => {
 rl.question(text, resolve)
 })}*/
 
+const rl = readline.createInterface({
+input: process.stdin,
+output: process.stdout,
+terminal: true,
+})
 const question = (texto) => {
 rl.clearLine(rl.input, 0)
 return new Promise((resolver) => {
