@@ -1,10 +1,9 @@
 //Código elaborado por Zam (Azamijs)
 
 require('./store.js')
-const { default: makeWASocket, generateWAMessage, downloadContentFromMessage, emitGroupParticipantsUpdate, emitGroupUpdate, makeInMemoryStore, prepareWAMessageMedia, MediaType, WAMessageStatus, AuthenticationState, GroupMetadata, initInMemoryKeyStore, MiscMessageGenerationOptions, useMultiFileAuthState, BufferJSON, WAMessageProto, MessageOptions,	 WAFlag, WANode,	 WAMetric,	 ChatModification, MessageTypeProto, WALocationMessage, ReconnectMode, WAContextInfo, proto,	 WAGroupMetadata, ProxyAgent,	 waChatKey, MimetypeMap, MediaPathMap, WAContactMessage, WAContactsArrayMessage, WAGroupInviteMessage, WATextMessage, WAMessageContent, WAMessage, BaileysError, WA_MESSAGE_STATUS_TYPE, MediaConnInfo, generateWAMessageContent, URL_REGEX, Contact, WAUrlInfo, WA_DEFAULT_EPHEMERAL, WAMediaUpload, mentionedJid, processTime,	 Browser, MessageType, Presence, WA_MESSAGE_STUB_TYPES, Mimetype, relayWAMessage,	 Browsers, GroupSettingChange, delay, DisconnectReason, WASocket, getStream, WAProto, isBaileys, AnyMessageContent, generateWAMessageFromContent, fetchLatestBaileysVersion, processMessage, processingMutex, jidDecode, areJidsSameUser } = require('@whiskeysockets/baileys')
+const { default: makeWASocket,  generateWAMessage,  downloadContentFromMessage,  emitGroupParticipantsUpdate,  emitGroupUpdate,  makeInMemoryStore,  prepareWAMessageMedia, MediaType,  WAMessageStatus, AuthenticationState, GroupMetadata, initInMemoryKeyStore, MiscMessageGenerationOptions,  useMultiFileAuthState, BufferJSON,  WAMessageProto,  MessageOptions,	 WAFlag,  WANode,	 WAMetric,	 ChatModification,  MessageTypeProto,  WALocationMessage, ReconnectMode,  WAContextInfo,  proto,	 WAGroupMetadata,  ProxyAgent,	 waChatKey,  MimetypeMap,  MediaPathMap,  WAContactMessage,  WAContactsArrayMessage,  WAGroupInviteMessage,  WATextMessage,  WAMessageContent,  WAMessage,  BaileysError,  WA_MESSAGE_STATUS_TYPE,  MediaConnInfo,   generateWAMessageContent, URL_REGEX,  Contact, WAUrlInfo,  WA_DEFAULT_EPHEMERAL,  WAMediaUpload,  mentionedJid,  processTime,	 Browser,  MessageType,  Presence,  WA_MESSAGE_STUB_TYPES,  Mimetype,  relayWAMessage,	 Browsers,  GroupSettingChange,  delay,  DisconnectReason,  WASocket,  getStream,  WAProto,  isBaileys,  AnyMessageContent,  generateWAMessageFromContent, fetchLatestBaileysVersion,  processMessage,  processingMutex,  jidDecode,  areJidsSameUser } = require('@whiskeysockets/baileys')
 let pino = require('pino')
 const fs = require('fs')
-const { readdirSync, statSync, unlinkSync } = require('fs')
 const axios = require('axios')
 const { exec, spawn, execSync } = require('child_process')
 const speed = require('performance-now')
@@ -19,45 +18,25 @@ const { tmpdir } = require('os')
 const { join } = require('path')
 const PhoneNumber = require('awesome-phonenumber')
 const { smsg, sleep } = require('./lib/simple')
+const { readdirSync, statSync, unlinkSync } = require('fs')
 const { say } = cfonts
 const color = (text, color) => {
 return !color ? chalk.green(text) : color.startsWith('#') ? chalk.hex(color)(text) : chalk.keyword(color)(text)
 }
-const util = require('util');
-const format = util.format;
-const syntaxerror = require('syntax-error')
-
-/*const question = (text) => {
+const question = (text) => {
 const rl = readline.createInterface({
 input: process.stdin,
 output: process.stdout })
 return new Promise((resolve) => {
 rl.question(text, resolve)
-})}*/
-
-const rl = readline.createInterface({
-input: process.stdin,
-output: process.stdout,
-terminal: true,
-})
-const question = (texto) => {
-rl.clearLine(rl.input, 0)
-return new Promise((resolver) => {
-rl.question(texto, (respuesta) => {
-rl.clearLine(rl.input, 0)
-resolver(respuesta.trim())
-})})
-}
-
+})}
 const usePairingCode = true
 const girastamp = speed()
 const latensi = speed() - girastamp
 const store = makeInMemoryStore({ logger: pino().child({ level: 'silent', stream: 'store' }) })
-
 async function connectToWhatsApp() {
 const { state, saveCreds } = await useMultiFileAuthState(global.session)
 const { version, isLatest } = await fetchLatestBaileysVersion()
-
 const colores = chalk.bold.white
 const opcionQR = chalk.blueBright
 const opcionTexto = chalk.cyan
@@ -66,7 +45,6 @@ const nameb = chalk.blue.bgBlue.bold.cyan
 const methodCodeQR = process.argv.includes('qr')
 const MethodMobile = process.argv.includes('mobile')
 const ini = chalk.green
-
 let opcion
 const options = {
 font: 'simple3d', // Cambia a la fuente deseada (por ejemplo: console, block, simpleBlock, simple, 3d, simple3d, chrome, huge, shade, slick, grid, pallet, tiny)
@@ -87,7 +65,7 @@ opcion = opcion
 }
 console.info = () => {}
 const client = makeWASocket({
-version,
+version,  
 logger: pino({ level: 'silent'}),
 printQRInTerminal: opcion == '1' ? true : false,
 qrTimeout: 180000,
@@ -96,16 +74,10 @@ auth: state
 })
 if (opcion === '2') {
 if (usePairingCode && !client.authState.creds.registered) {
-let phoneNumber = await question(chalk.blueBright('Ingrese su número de WhatsApp todo junto\n') + chalk.greenBright('Ejemplo: 521729999\n'))
-phoneNumber = phoneNumber.replace(/\D/g, '')
-setTimeout(async () => {
-let codeBot = await client.requestPairingCode(phoneNumber.trim())
-codeBot = codeBot?.match(/.{1,4}/g)?.join("-") || codeBot
-console.log(chalk.bold.cyanBright(`Codigo de emparejamiento:`), chalk.bold.white(`${codeBot}`))
-}, 2000)
-  
+const phoneNumber = await question(chalk.blueBright('Ingrese su número de WhatsApp todo junto\n') + chalk.greenBright('Ejemplo: 521729999\n'))
+const code = await client.requestPairingCode(phoneNumber.trim())
+console.log(chalk.bold.cyanBright(`Codigo de emparejamiento:`), chalk.bold.white(`${code}`))
 }}
-
 client.decodeJid = (jid) => {
 if (!jid) return jid
 if (/:\d+@/gi.test(jid)) {
@@ -133,8 +105,19 @@ require('./curiosity')(client, m, messages)
 } catch (err) {
 console.log(err)
 }
-})
 
+    
+          
+            
+    
+
+          
+          Expand Down
+    
+    
+  
+})
+  
 var low
 try {
 low = require('lowdb')
@@ -165,9 +148,8 @@ loadDatabase()
 if (global.db) setInterval(async () => {
 if (global.db.data) await global.db.write()
 }, 1 * 1000)
-
-async function clearTmp() {
-const tmp = [join(__dirname, './tmp')]
+function clearTmp() {
+const tmp = [tmpdir(), join(__dirname, './tmp')]
 const filename = []
 tmp.forEach((dirname) => readdirSync(dirname).forEach((file) => filename.push(join(dirname, file))))
 return filename.map((file) => {
@@ -177,7 +159,6 @@ return unlinkSync(file)
 }
 return false
 })}
-
 if (!opts['test']) { 
 if (global.db) { 
 setInterval(async () => { 
@@ -188,7 +169,6 @@ if (opts['autocleartmp'] && (global.support || {}).find) (tmp = [os.tmpdir(), 't
 setInterval(async () => {
 await clearTmp()
 console.log(`\nBasura eliminada\n`)}, 180000)
-
 if (global.db && global.db.data && global.db.data.users && global.db.data.users[anu.participants]) {
 var idioma = global.db.data.users[anu.participants]?.lenguaje || 'es'
 } else {
@@ -199,7 +179,7 @@ var _welcome = JSON.parse(fs.readFileSync(`./lib/idiomas/${idioma}.json`))
 } catch (error) {
 console.error('Error:', error)
 }
-
+  
 client.ev.on('groups.update', async (json) => {
 console.log(color(json, '#009FFF'))
 const res = json[0]
@@ -259,7 +239,6 @@ ppgroup = 'https://qu.ax/OEgX.jpg'
 let text = `${ac.text6}\n${res.subject}`
 client.sendContextInfoIndex(res.id, text, fkontak)
 }})
-
 client.ev.on('group-participants.update', async (anu) => {
 const wel = _welcome.index.welcome
 const bye = _welcome.index.bye
@@ -294,73 +273,19 @@ client.sendMessage(anu.id, { image: { url: ppuser }, mentions: [num, usuario], c
 console.log(err)
 }
 })
-
 client.sendText = (jid, text, quoted = '', options) => client.sendMessage(jid, { text: text, ...options }, { quoted })
 client.sendContactArray = (jid, data, quoted, options) => client.sendMessage(jid, { contacts: { displayName: (Array.isArray(data[0]) ? data[0][1] : data.length > 1 ? '2013 kontak' : data[0].displayName) || null, contacts: (Array.isArray(data[0]) ? data : [data]).map(([number, name, isi, isi1, isi2, isi3, isi4, isi5]) => ({ vcard: `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:${name.replace(/\n/g, '\\n')}\nitem.ORG:${isi}\nitem1.TEL;waid=${number}:${PhoneNumber('+' + number).getNumber('international')}\nitem1.X-ABLabel:${isi1}\nitem2.EMAIL;type=INTERNET:${isi2}\nitem2.X-ABLabel:📧 Email\nitem3.ADR:;;${isi3};;;;\nitem3.X-ABADR:ac\nitem3.X-ABLabel:📍 Region\nitem4.URL:${isi4}\nitem4.X-ABLabel:Website\nitem5.X-ABLabel:${isi5}\nEND:VCARD`.trim(), displayName: name })) }}, { quoted, ...options })
-
 client.ev.on('connection.update', (update) => {
 const { connection, lastDisconnect, receivedPendingNotifications, isNewLogin} = update
-/**
- * Añadida la logica de advertencias de conexion desde el proyecto ANIMXSCANS https://github.com/ReyEndymion
- */
-console.log('receivedPendingNotifications: ', receivedPendingNotifications)
-const code = lastDisconnect?.error?.output?.statusCode || lastDisconnect?.error?.output?.payload?.statusCode;
-const number = state?.creds?.me?.jid?.split('@')[0]
+console.log(receivedPendingNotifications)
 if (connection == 'connecting') {
 console.log('🚀 Iniciando...')
 }
+ 
 if (update.isNewLogin) {
 console.log(ini(`Conexion exitosa`))
 }
-if (connection == undefined) {
-console.log(`Esperando Conexion...`)
-}
-if (connection == 'close') {
-console.log('🚀 cerrada')
-if (code === DisconnectReason.badSession) {
-//500
-console.error(`[ ⚠ ] ${number} ${code} Sesión incorrecta, por favor elimina la Session y escanea nuevamente.`);
-} else if (code === DisconnectReason.multideviceMismatch){
-//411
-console.warn(`[ ⚠ ] Conexión cerrada, El dispositivo no coincide, codigo de error: ${code}...`);
-} else if (code === DisconnectReason.connectionClosed) {
-//428
-console.warn(`[ ⚠ ] ${number} ${code} Conexión cerrada, reconectando...`);
-if (lastDisconnect?.error && lastDisconnect?.error.output && lastDisconnect?.error.output.statusCode === 428 && lastDisconnect?.error.output.error === 'Precondition Required') {
-console.log(chalk.whiteBright(`Se requiere ajustar en caso de reconexion por precondicion`))
-}
-} else if (code === DisconnectReason.connectionReplaced) {
-//440
-console.error(`[ ⚠ ] ${number} ${code} Conexión reemplazada, se ha abierto otra nueva sesión para ${number}. Por favor, cierra la sesión actual primero.`);
-//client.ws.close()
-} else if (code === DisconnectReason.restartRequired) {
-//515
-console.info(`[ ⚠ ] ${number} ${code} Reinicio necesario, reinicie el servidor si presenta algún problema.`);
-} else if (code === (DisconnectReason.timedOut || DisconnectReason.connectionLost)) {
-//408
-console.warn(`[ ⚠ ] ${number} ${code} Conexión perdida con el servidor, Tiempo de conexión agotado, reconectando...`);
-} else if (code === DisconnectReason.loggedOut) {
-//401
-console.error(`[ ⚠ ] ${number} ${code} Conexion cerrada, por favor elimina la Session y escanea nuevamente.`);
-} else if (code === DisconnectReason.forbidden) {
-//403
-console.warn(`[ ⚠ ] ${number} ${code} "Conexión prohibida"\n Posible razón de desconexión: revisión de whatsapp o soporte. `);
-} else if (code === DisconnectReason.unavailableService) {
-//503
-console.error(`[ ⚠ ] ${number} "Servicio no disponible", La sesion se cerro con codigo ${code} debido a una respesta inesperada de la red`);
-} else if (code === 405) {
-//Method Not Allowed
-console.warn(`[ ⚠ ] ${number} "Método no permitido" la sesion en whatsapp no se establecio: ${code || ''}: ${connection || ''}`);
-} else {
-console.warn(`[ ⚠ ] ${number} "Razón de desconexión desconocida". ${code || ''}: ${connection || ''}`);
-}
-}
-if (connection == 'open') {
-console.log(ini(`🚀 ${number} Conectado a Whatsapp`))
-}
-
 })
-
 client.public = true
 store.bind(client.ev)
 client.ev.on('creds.update', saveCreds)
@@ -368,55 +293,7 @@ process.on('uncaughtException', console.log)
 process.on('unhandledRejection', console.log)
 process.on('RefenceError', console.log)
 }
-
 connectToWhatsApp()
-/**
- * lectura de la carpeta plugins adaptada desde el proyecto ANIMXSCANS https://github.com/ReyEndymion
- */
-const dirInPlugins = []
-let pluginFolder = join(__dirname, 'plugins');
-let pluginFilter = (filename) => /\.js$/.test(filename);
-global.plugins = {};
-async function filesInit() {
-for (let filename of readdirSync(pluginFolder).filter(pluginFilter)) {
-try {
-global.plugins[filename] = require(join(pluginFolder, filename))
-} catch (e) {
-console.error(e)
-delete global.plugins[filename]
-}}}
-filesInit().then(_ => Object.keys(global.plugins)).catch(console.error)
-
-global.reload = async (_ev, filename) => {
-if (pluginFilter(filename)) {
-let pluginFile = require.resolve(join(pluginFolder, filename))
-if (filename in global.plugins) {
-if (fs.existsSync(pluginFile)) console.info(`plugin actualizado - '${filename}'`)
-else {
-console.warn(`plugin eliminado - '${filename}'`)
-return delete global.plugins[filename]
-}
-} else console.info(`nuevo plugin - '${filename}'`)
-let err = syntaxerror(fs.readFileSync(pluginFile), filename, {
-sourceType: 'module',
-allowAwaitOutsideFunction: true
-})
-if (err) console.error(`Error de sintaxis mientras se carga '${filename}'\n${format(err)}`)
-else try {
-let module = `${require.resolve(pluginFile)}?update=${Date.now()}`
-global.plugins[filename] = module.default || module
-} catch (e) {
-console.error(`Hay un error que requiere atención en '${filename}\n${format(e)}'`)
-} finally {
-global.plugins = Object.fromEntries(Object.entries(global.plugins).sort(([a], [b]) => a.localeCompare(b)))
-}
-} else if (fs.statSync(filename).isDirectory()) {
-dirInPlugins.push(filename)
-}
-}
-Object.freeze(global.reload)
-fs.watch(pluginFolder, global.reload)
-
 let file = require.resolve(__filename)
 fs.watchFile(file, () => {
 fs.unwatchFile(file)
