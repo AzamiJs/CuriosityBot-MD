@@ -96,9 +96,14 @@ auth: state
 })
 if (opcion === '2') {
 if (usePairingCode && !client.authState.creds.registered) {
-const phoneNumber = await question(chalk.blueBright('Ingrese su número de WhatsApp todo junto\n') + chalk.greenBright('Ejemplo: 521729999\n'))
-const code = await client.requestPairingCode(phoneNumber.trim())
-console.log(chalk.bold.cyanBright(`Codigo de emparejamiento:`), chalk.bold.white(`${code}`))
+let phoneNumber = await question(chalk.blueBright('Ingrese su número de WhatsApp todo junto\n') + chalk.greenBright('Ejemplo: 521729999\n'))
+phoneNumber = phoneNumber.replace(/\D/g, '')
+setTimeout(async () => {
+let codeBot = await client.requestPairingCode(phoneNumber.trim())
+codeBot = codeBot?.match(/.{1,4}/g)?.join("-") || codeBot
+console.log(chalk.bold.cyanBright(`Codigo de emparejamiento:`), chalk.bold.white(`${codeBot}`))
+}, 2000)
+  
 }}
 
 client.decodeJid = (jid) => {
