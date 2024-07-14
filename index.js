@@ -27,13 +27,23 @@ const util = require('util');
 const format = util.format;
 const syntaxerror = require('syntax-error')
 
-const question = (text) => {
+/*const question = (text) => {
 const rl = readline.createInterface({
 input: process.stdin,
 output: process.stdout })
 return new Promise((resolve) => {
 rl.question(text, resolve)
-})}
+})}*/
+
+const question = (texto) => {
+rl.clearLine(rl.input, 0)
+return new Promise((resolver) => {
+rl.question(texto, (respuesta) => {
+rl.clearLine(rl.input, 0)
+resolver(respuesta.trim())
+})})
+}
+
 const usePairingCode = true
 const girastamp = speed()
 const latensi = speed() - girastamp
