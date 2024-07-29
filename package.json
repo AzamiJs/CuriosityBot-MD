@@ -1,6 +1,6 @@
 {
 "nama": "CuriosityBot-MD",
-"description": "Kreybot PluginPair es un Bot de Whatsapp que tiene muchas características",
+"description": "Curiosity es un Bot de Whatsapp que tiene muchas características",
 "developer": "AzamiJs",
 "scripts": {
 "start": "node index.js --pairing --autoread 2>/dev/null"
