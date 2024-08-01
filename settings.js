@@ -1,4 +1,8 @@
-global.owner = [['5214434703586']]
+global.owner = [
+['5214434703586'],
+['573147616444'], 
+['5492266613038']
+]
 
 global.numberbot = '5215534019278'
 global.nameowner = 'Zam'
