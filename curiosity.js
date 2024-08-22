@@ -129,7 +129,7 @@ messageTimestamp  : m.messageTimestamp || 754785898978
 return client.ev.emit('messages.upsert', { messages : [ emit ] ,  type : 'notify'})
 }}}
 
-if (global.db.data.chats[m.chat].antilink && global.db.data.users[m.sender].lenguaje && groupMetadata) {
+if (global.db.data.chats[m.chat].antilink && groupMetadata) {
 let linksProhibidos = {
 'telegram': /telegram\.me|t\.me/gi,
 'facebook': /facebook\.com/gi,
@@ -146,23 +146,23 @@ return false
 }
 let EnlacesProhibidos = ['whatsapp', 'telegram']
 if (vl(m.text, EnlacesProhibidos)) {
-if (!isBotAdmins) return m.reply(nLnk.text6)
+if (!isBotAdmins) return m.reply('El bot no es admin, no puede eliminar intrusos')
 let gclink = (`https://chat.whatsapp.com/` + await client.groupInviteCode(m.chat))
 let isLinkThisGc = new RegExp(gclink, 'i')
 let isgclink = isLinkThisGc.test(m.text)
-if (isgclink) return client.sendMessage(m.chat, { text: nLnk.text1 + ` *${groupName}*` }, { quoted: m })
-if (isAdmins) return client.sendMessage(m.chat, { text: nLnk.text2 }, { quoted: m })
-if (isCreator) return client.sendMessage(m.chat, { text: nLnk.text3 }, { quoted: m })
+if (isgclink) return client.sendMessage(m.chat, { text: `El enlace pertenece a *${groupName}*` }, { quoted: m })
+if (isAdmins) return client.sendMessage(m.chat, { text: 'No puedo eliminar un administrador' }, { quoted: m })
 await client.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: false, id: m.key.id, participant: m.key.participant } })
-client.sendMessage(from, { text: `${nLnk.text4}\n\n@${m.sender.split('@')[0]} ${nLnk.text5}`, contextInfo: { mentionedJid: [sender] } }, { quoted: m })
+client.sendMessage(from, { text: `Anti Enlaces\n\n@${m.sender.split('@')[0]} mandaste un enlace prohibido`, contextInfo: { mentionedJid: [sender] } }, { quoted: m })
+client.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
 }
 }
 
-if (global.db.data.chats[m.chat].antifake && !isAdmins && global.db.data.users[m.sender].lenguaje) {
+if (global.db.data.chats[m.chat].antifake && !isAdmins) {
 let forbidPrefixes = ['965', '966', '971', '974', '212', '213', '216', '44', '1', '62', '61', '64', '353', '33', '32', '41', '352', '377', '351', '244', '258', '91', '977', '880', '92', '94', '960', '7', '380', '375', '998', '996', '373', '374', '994', '992', '62', '49', '43', '39', '378', '379', '86', '886', '852', '853', '65', '850', '82', '93', '98', '48', '84', '856', '855', '254', '255', '256', '250', '257', '258', '252', '269', '243', '90', '998', '60', '222', '27', '265']
 for (let prefix of forbidPrefixes) {
 if (m.sender.startsWith(prefix)) {
-await m.reply(aFk.text1)
+await m.reply('*Anti Fakes* activo')
 client.groupParticipantsUpdate(m.chat, [m.sender], 'remove')}}}
   
 switch(prefix && command) {
