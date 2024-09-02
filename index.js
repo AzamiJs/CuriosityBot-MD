@@ -77,7 +77,7 @@ opcion = opcion
 }
 console.info = () => {}
 const client = makeWASocket({
-version: [2, 2513, 1],
+version,
 logger: pino({ level: 'silent'}),
 printQRInTerminal: opcion == '1' ? true : false,
 qrTimeout: 180000,
