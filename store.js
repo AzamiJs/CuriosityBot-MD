@@ -12,7 +12,7 @@ global.prefa = '.'
 global.session = 'session'
 global.vs = '2.0.0'
 global.author = 'zam'
-global.lolkey = 'GataDiosV2'
+global.lolkey = 'GataDiosV3'
 
 let file = require.resolve(__filename)
 fs.watchFile(file, () => {
