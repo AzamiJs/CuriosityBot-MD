@@ -1,18 +1,24 @@
+> Curiosity ha dejado de recibir actualizaciones por ahora. Podría volver en el futuro.
+
+<!--
 <a href="https://github.com/azamijs/CuriosityBot-MD/watchers"><img title="Watching" src="https://img.shields.io/github/watchers/azamijs/CuriosityBot-MD?label=Watchers&color=blue&style=flat-square"></a>
 <a href="https://github.com/azamijs/Curiosity"><img title="Followers" src="https://img.shields.io/github/followers/azamijs?color=blue&style=flat-square"></a>
 <a href="https://github.com/azamijs/CuriosityBot-MD/stargazers/"><img title="Stars" src="https://img.shields.io/github/stars/azamijs/CuriosityBot-MD?color=red&style=flat-square"></a>
 </p>
 
-## `Grupo de WhatsApp`
+ ## `Grupo de WhatsApp`
 <a href="https://chat.whatsapp.com/JAdp1tAPOCEJZWUeEVrnc7"><img title="Grupo" src="https://img.shields.io/badge/Whatsapp Group-green?colorA=%23ff0000&colorB=%23017e40&style=for-the-badge"></a>
+!-->
 
 ----
-### ☁️ SKY ULTRA PLUS
-[![YouTube](https://img.shields.io/badge/SkyUltraPlus-Host-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtu.be/fZbcCLpSH6Y?si=1sDen7Bzmb7jVpAI)
+#### SKY ULTRA PLUS
+<!--[![YouTube](https://img.shields.io/badge/SkyUltraPlus-Host-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtu.be/fZbcCLpSH6Y?si=1sDen7Bzmb7jVpAI)!-->
 
-<a href="https://dash.corinplus.com"><img src="https://qu.ax/zFzXF.png" height="125px"></a>
+<a href="https://dash.skyultraplus.com"><img src="https://qu.ax/zFzXF.png" height="125px"></a>
 
-### Información sobre Sky
+[`Dashboard`](https://dash.skyultraplus.com)
+
+<!--### Información sobre Sky
 - **Dashboard:** [`Aquí`](https://dash.skyultraplus.com)
 - **Panel:** [`Aquí`](https://panel.skyultraplus.com)
 - **Estado de servicios:** [`Aquí`](https://estado.skyultraplus.com)
@@ -100,9 +106,9 @@ npm update
 node .
 ```
 
----------
+--------- !-->
 
-### `Agradecimiento ⭐`
+### `Gracias`
 * [`@Zam`](https://github.com/AzamiJs)
 * [`@elrebelde21`](https://github.com/elrebelde21)
 * [`@GataDios`](https://github.com/GataNina-Li)
